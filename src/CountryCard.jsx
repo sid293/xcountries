@@ -13,8 +13,9 @@ import React from 'react';
 
 // }
 
-export default function CountryCard(){
+export default function CountryCard({c}){
     let [cards, setCards] = useState([]);
+    // let [cards2, setCards2] = useState([]);
     // let res = getCardsArray();
     // useEffect(()=>{
     // },[])
@@ -38,7 +39,7 @@ export default function CountryCard(){
         }}>
             {/* <h3>cards</h3> */}
         {            
-            cards.map((card)=>(
+            c.map((card)=>(
                     <div style={{
                         height:"fit-content",
                         width:"150px",

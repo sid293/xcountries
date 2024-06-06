@@ -1,12 +1,22 @@
 // import logo from './logo.svg';
+import {useState} from 'react';
 import './App.css';
 import CountryCard from './CountryCard';
 
 function App() {
+    let [cards, setCards] = useState([]);
+
+    let url = "https://restcountries.com/v3.1/all";
+    try{
+        fetch(url).then(response => response.json()).then((data)=>{setCards(data)})
+    }catch(err){
+        console.log(err);
+    }
+
   return (
     <div className="App">
       {/* <h2>Home</h2> */}
-      <CountryCard/>
+      <CountryCard c={cards}/>
     </div>
   );
 }
