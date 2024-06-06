@@ -4,10 +4,10 @@ import './App.css';
 import CountryCard from './CountryCard';
 
 function App() {
-    let [cards, setCards] = useState([]);
+    // let [cards, setCards] = useState([]);
 
-    let url = "https://restcountries.com/v3.1/all";
-    fetch(url).then(response => response.json()).then((data)=>{setCards(data)}).catch(err => {console.log("error occured while fetching")});
+    // let url = "https://restcountries.com/v3.1/all";
+    // fetch(url).then(response => response.json()).then((data)=>{setCards(data)}).catch(err => {console.log("error occured while fetching")});
     // try{
     // }catch(err){
     //     // console.log(err);
@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       {/* <h2>Home</h2> */}
-      <CountryCard c={"cards"}/>
+      <CountryCard />
     </div>
   );
 }

@@ -13,12 +13,13 @@ import React from 'react';
 
 // }
 
-export default function CountryCard({c}){
+export default function CountryCard(){
     let [cards, setCards] = useState([]);
     // let [cards2, setCards2] = useState([]);
     // let res = getCardsArray();
     useEffect(()=>{
         let url = "https://restcountries.com/v3.1/all";
+        console.log("runnning useeffect");
         fetch(url).then(response => response.json()).then((data)=>{setCards(data)}).catch(err => {console.log("error occured while fetching")});
         // console.log(cards);
     },[])
