@@ -1,17 +1,17 @@
 import {useState} from 'react';
 import React from 'react';
 
-let getCardsArray = ()=>{
-    let url = "https://restcountries.com/v3.1/all";
-    let ans;
-    try{
-        return fetch(url).then(response => response.json())
-    }catch(err){
-        console.log(err);
-    }
-    return ans;
+// let getCardsArray = ()=>{
+//     let url = "https://restcountries.com/v3.1/all";
+//     let ans;
+//     try{
+//         return fetch(url).then(response => response.json())
+//     }catch(err){
+//         console.log(err);
+//     }
+//     return ans;
 
-}
+// }
 
 export default function CountryCard(){
     let [cards, setCards] = useState([]);
@@ -19,9 +19,16 @@ export default function CountryCard(){
     // useEffect(()=>{
     // },[])
 
-    getCardsArray().then((data)=>{
-        setCards(data);
-    })
+    // getCardsArray().then((data)=>{
+    //     setCards(data);
+    // })
+
+    let url = "https://restcountries.com/v3.1/all";
+    try{
+        fetch(url).then(response => response.json()).then((data)=>{setCards(data)})
+    }catch(err){
+        console.log(err);
+    }
 
     return(
         <div style={{
@@ -29,7 +36,7 @@ export default function CountryCard(){
             justifyContent:"center",
             flexWrap:"wrap"
         }}>
-            <h3>cards</h3>
+            {/* <h3>cards</h3> */}
         {            
             cards.map((card)=>(
                     <div style={{
