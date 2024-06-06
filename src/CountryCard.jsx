@@ -16,12 +16,12 @@ let getCardsArray = ()=>{
 export default function CountryCard(){
     let [cards, setCards] = useState([]);
     // let res = getCardsArray();
-    useEffect(()=>{
-        getCardsArray().then((data)=>{
-            setCards(data);
-        })
-    },[])
+    // useEffect(()=>{
+    // },[])
 
+    getCardsArray().then((data)=>{
+        setCards(data);
+    })
 
     return(
         <div style={{
