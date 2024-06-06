@@ -29,8 +29,7 @@ export default function CountryCard(){
             justifyContent:"center",
             flexWrap:"wrap"
         }}>
-        {cards.length === 0?<div>cards not found</div>:
-            
+        {            
             cards.map((card)=>(
                     <div style={{
                         height:"fit-content",
