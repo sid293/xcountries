@@ -29,6 +29,7 @@ export default function CountryCard(){
             justifyContent:"center",
             flexWrap:"wrap"
         }}>
+            <h3>cards</h3>
         {            
             cards.map((card)=>(
                     <div style={{
