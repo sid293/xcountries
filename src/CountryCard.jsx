@@ -14,22 +14,24 @@ import React from 'react';
 // }
 
 export default function CountryCard({c}){
-    let [cards, setCards] = useState([]);
+    // let [cards, setCards] = useState([]);
     // let [cards2, setCards2] = useState([]);
     // let res = getCardsArray();
     // useEffect(()=>{
-    // },[])
+    //     console.log(cards);
+    // },[cards])
 
     // getCardsArray().then((data)=>{
     //     setCards(data);
     // })
 
-    let url = "https://restcountries.com/v3.1/all";
-    try{
-        fetch(url).then(response => response.json()).then((data)=>{setCards(data)})
-    }catch(err){
-        console.log(err);
-    }
+    // let url = "https://restcountries.com/v3.1/all";
+    // try{
+    //     fetch(url).then(response => response.json()).then((data)=>{setCards(data)})
+    // }catch(err){
+    //     console.log(err);
+    // }
+    // console.log(c);
 
     return(
         <div style={{
@@ -40,7 +42,7 @@ export default function CountryCard({c}){
             {/* <h3>cards</h3> */}
         {            
             c.map((card)=>(
-                    <div style={{
+                    <div key={card.name.common} style={{
                         height:"fit-content",
                         width:"150px",
                         margin:"20px",
