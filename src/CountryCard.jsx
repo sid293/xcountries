@@ -23,7 +23,7 @@ export default function CountryCard(){
     useEffect(()=>{
         console.log("inputs useeffect");
         let newCards = cards.filter((card)=>{
-            return card.name.common.includes(Input)});
+            return card.name.common.toLowerCase().includes(Input.toLowerCase())});
         setFilteredCards(newCards);
         // fetchData();
     },[Input])
