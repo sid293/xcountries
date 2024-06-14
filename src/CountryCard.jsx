@@ -1,39 +1,33 @@
 import {useState, useEffect} from 'react';
+import './countryCard.module.css';
 import React from 'react';
 
-// let getCardsArray = ()=>{
-//     let url = "https://restcountries.com/v3.1/all";
-//     let ans;
-//     try{
-//         return fetch(url).then(response => response.json())
-//     }catch(err){
-//         console.log(err);
-//     }
-//     return ans;
-
-// }
 
 export default function CountryCard(){
     let [cards, setCards] = useState([]);
-    // let [cards2, setCards2] = useState([]);
-    // let res = getCardsArray();
-    useEffect(()=>{
+    let [Input,setInput] = useState("");
+    let [filteredCards, setFilteredCards] = useState([]);
+
+    let fetchData = ()=>{
         let url = "https://restcountries.com/v3.1/all";
-        console.log("runnning useeffect");
-        fetch(url).then(response => response.json()).then((data)=>{setCards(data)}).catch(err => {console.log("error occured while fetching")});
-        // console.log(cards);
+        fetch(url).then(response => response.json()).then((data)=>{
+            setCards(data);
+            setFilteredCards(data)}).catch(err => {console.log("error occured while fetching")});
+    }
+
+    useEffect(()=>{
+        console.log("useeffect");
+        fetchData();
     },[])
 
-    // getCardsArray().then((data)=>{
-    //     setCards(data);
-    // })
+    useEffect(()=>{
+        console.log("inputs useeffect");
+        let newCards = cards.filter((card)=>{
+            return card.name.common.includes(Input)});
+        setFilteredCards(newCards);
+        // fetchData();
+    },[Input])
 
-    // try{
-    //     fetch(url).then(response => response.json()).then((data)=>{setCards(data)})
-    // }catch(err){
-    //     console.log(err);
-    // }
-    // console.log(c);
 
     return(
         <div style={{
@@ -41,10 +35,12 @@ export default function CountryCard(){
             justifyContent:"center",
             flexWrap:"wrap"
         }}>
-            {/* <h3>cards</h3> */}
+        <div className='header' style={{width:"100vw",height:"55px",boxShadow:"0px 5px 5px gray"}}>
+            <input value={Input} onChange={(e)=>{setInput(e.target.value)}}  type="text" />
+        </div>
         {            
-            cards.map((card)=>(
-                    <div key={card.name.common} style={{
+            filteredCards.map((card)=>(
+                    <div key={card.name.common} className='countryCard' style={{
                         height:"fit-content",
                         width:"150px",
                         margin:"20px",

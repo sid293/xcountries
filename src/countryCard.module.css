@@ -1,0 +1,10 @@
+
+.header{
+    /* box-shadow: inset; */
+    border:2px solid black;
+}
+
+input{
+    width:70vw;
+    height:35px;
+}
